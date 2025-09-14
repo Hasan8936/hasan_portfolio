@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nusaibul Hasan - Cybersecurity & Data Science Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f0f23;
+            color: #e2e8f0;
+        }
+        .glass-effect {
+            background: rgba(15, 15, 35, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(79, 70, 229, 0.3);
+        }
+        .accent-color {
+            color: #4f46e5;
+        }
+        .bg-accent {
+            background-color: #4f46e5;
+        }
+        .border-accent {
+            border-color: #4f46e5;
+        }
+        .text-heading {
+            color: #f8fafc;
+        }
+        .gsap-reveal {
+            opacity: 0;
+        }
+        .bg-card {
+            background-color: #1e1b4b;
+        }
+        .bg-chip {
+            background-color: #312e81;
+        }
+        .btn {
+            transition: all 0.3s ease;
+        }
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(79, 70, 229, 0.3);
+        }
+        .timeline-item {
+            position: relative;
+            padding-left: 2.5rem;
+            padding-bottom: 2rem;
+            border-left: 2px solid #4338ca;
+        }
+        .timeline-item:last-child {
+            border-left: 2px solid transparent;
+        }
+        .timeline-dot {
+            position: absolute;
+            left: -0.5rem;
+            top: 0.25rem;
+            height: 1rem;
+            width: 1rem;
+            background-color: #4f46e5;
+            border-radius: 9999px;
+            border: 2px solid #0f0f23;
+        }
+        @keyframes marquee {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-100%); }
+        }
+        .animate-marquee {
+            animation: marquee 30s linear infinite;
+        }
+        .marquee-container:hover .animate-marquee {
+            animation-play-state: paused;
+        }
+        .tab-btn.active {
+            background-color: #4f46e5;
+            color: #fff;
+        }
+        #main-nav a.active {
+            color: #4f46e5;
+        }
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+        .typed-cursor {
+            opacity: 1;
+            animation: blink 0.7s infinite;
+        }
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        .security-glow {
+            box-shadow: 0 0 20px rgba(79, 70, 229, 0.2);
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <div id="particles-js"></div>
+
+    <!-- Header -->
+    <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-heading flex items-center gap-2">
+                <svg class="w-8 h-8 text-indigo-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.623 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+                </svg>
+                <span class="hidden sm:block">Nusaibul Hasan</span>
+            </a>
+            <div id="main-nav" class="hidden md:flex space-x-8 items-center text-sm font-medium text-slate-300">
+                <a href="#about" class="hover:text-indigo-400 transition-colors duration-300">About</a>
+                <a href="#education" class="hover:text-indigo-400 transition-colors duration-300">Education</a>
+                <a href="#skills" class="hover:text-indigo-400 transition-colors duration-300">Skills</a>
+                <a href="#projects" class="hover:text-indigo-400 transition-colors duration-300">Projects</a>
+                <a href="#certifications" class="hover:text-indigo-400 transition-colors duration-300">Certifications</a>
+                <a href="#contact" class="border border-indigo-400 text-indigo-400 px-4 py-2 rounded-md hover:bg-indigo-400/10 transition-colors duration-300 btn">Contact</a>
+            </div>
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="md:hidden text-heading focus:outline-none">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-indigo-900/90">
+            <a href="#about" class="block py-3 px-6 text-sm hover:text-indigo-400 transition-colors duration-300">About</a>
+            <a href="#education" class="block py-3 px-6 text-sm hover:text-indigo-400 transition-colors duration-300">Education</a>
+            <a href="#skills" class="block py-3 px-6 text-sm hover:text-indigo-400 transition-colors duration-300">Skills</a>
+            <a href="#projects" class="block py-3 px-6 text-sm hover:text-indigo-400 transition-colors duration-300">Projects</a>
+            <a href="#certifications" class="block py-3 px-6 text-sm hover:text-indigo-400 transition-colors duration-300">Certifications</a>
+            <a href="#contact" class="block py-3 px-6 text-sm hover:text-indigo-400 transition-colors duration-300">Contact</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 pt-24 md:pt-32 relative z-10">
+
+        <!-- Hero Section -->
+        <section id="hero" class="min-h-[85vh] flex items-center">
+            <div class="max-w-4xl z-10">
+                <p class="text-lg text-indigo-400 mb-4 font-medium gsap-reveal">Hi, I'm</p>
+                <h1 class="text-5xl md:text-7xl font-extrabold text-heading mb-4 gsap-reveal" data-gsap-delay="100">Nusaibul Hasan.</h1>
+                <h2 class="text-4xl md:text-6xl font-bold text-slate-400 mb-6 gsap-reveal" data-gsap-delay="200">I secure <span id="typed-text" class="text-indigo-400"></span><span class="typed-cursor">|</span></h2>
+                <p class="text-slate-400 max-w-xl mb-8 gsap-reveal" data-gsap-delay="300">
+                    Cybersecurity specialist and data science enthusiast focused on building secure, intelligent systems and protecting digital infrastructures.
+                </p>
+                <div class="flex items-center gap-6 gsap-reveal" data-gsap-delay="400">
+                    <a href="#contact" class="btn bg-indigo-600 text-white font-semibold px-8 py-3 rounded-md security-glow">Get In Touch</a>
+                    <a href="https://linkedin.com/in/LinkedIn" target="_blank" class="btn border border-indigo-400 text-indigo-400 font-semibold px-8 py-3 rounded-md hover:bg-indigo-400/10">View LinkedIn</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-20 md:py-32">
+            <div class="max-w-5xl mx-auto grid md:grid-cols-3 gap-12 items-start">
+                <div class="md:col-span-2 gsap-reveal">
+                    <h2 class="text-3xl font-bold text-heading mb-6">About Me</h2>
+                    <div class="space-y-4 text-slate-400">
+                        <p>
+                           Hello! I'm Nusaibul, a cybersecurity professional and student at <span class="text-indigo-400 font-medium">Thapar Institute of Engineering and Technology</span>, specializing in Electronics and Instrumentation Control Engineering.
+                        </p>
+                        <p>
+                           My expertise spans across cybersecurity threat detection, data science, and cloud security. I've built innovative solutions including IoT-based anomaly detection systems and AI-powered inventory optimization platforms.
+                        </p>
+                        <p>
+                           I'm passionate about leveraging cutting-edge technologies to create secure, intelligent systems that protect and optimize digital infrastructures.
+                        </p>
+                    </div>
+                </div>
+                <div class="gsap-reveal" data-gsap-delay="100">
+                    <h3 class="text-2xl font-bold text-heading mb-6">Achievements</h3>
+                    <div class="space-y-6">
+                        <div class="flex items-center gap-4">
+                            <svg class="w-10 h-10 text-indigo-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.623 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+                            </svg>
+                            <div>
+                                <h4 class="font-bold text-heading">Google Cybersecurity Professional</h4>
+                                <p class="text-sm text-slate-400">Certified in security operations and incident response.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <svg class="w-10 h-10 text-indigo-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 00.75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 00-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0112 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 01-.673-.38m0 0A2.18 2.18 0 013 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 013.413-.387m7.5 0V5.25A2.25 2.25 0 0013.5 3h-3a2.25 2.25 0 00-2.25 2.25v.894m7.5 0a48.667 48.667 0 00-7.5 0M12 12.75h.008v.008H12v-.008z" />
+                            </svg>
+                            <div>
+                                <h4 class="font-bold text-heading">IBM Certified Data Scientist</h4>
+                                <p class="text-sm text-slate-400">Advanced data science and machine learning expertise.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <svg class="w-10 h-10 text-indigo-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0012 9.75c-2.551 0-5.056.348-7.5 1.582V21M3 21h18M12 6.75h.008v.008H12V6.75z" />
+                            </svg>
+                            <div>
+                                <h4 class="font-bold text-heading">Academic Excellence</h4>
+                                <p class="text-sm text-slate-400">Executive Committee Member at SATURNALIA & Core Team FROSH.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Education Section -->
+        <section id="education" class="py-20 md:py-32">
+            <h2 class="text-3xl font-bold text-heading text-center mb-12 gsap-reveal">Education</h2>
+            <div class="max-w-3xl mx-auto gsap-reveal">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <h3 class="text-xl font-bold text-heading mb-1">Thapar Institute of Engineering and Technology</h3>
+                    <p class="text-indigo-400 font-medium mb-2">Bachelor of Engineering - Electronics and Instrumentation Control Engineering</p>
+                    <p class="text-slate-400 text-sm mb-3">2022 - 2026 | Patiala, Punjab</p>
+                    <p class="text-xs text-slate-500 italic">• Completed coursework in Data Structures, Database Management, and Machine Learning</p>
+                    <p class="text-xs text-slate-500 italic">• Executive Committee Member at SATURNALIA (2024) and Core Team Member for FROSH (2023)</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <h3 class="text-xl font-bold text-heading mb-1">City Montessori School</h3>
+                    <p class="text-indigo-400 font-medium mb-2">Class 12th</p>
+                    <p class="text-slate-400 text-sm mb-3">2021 | Lucknow, UP</p>
+                    <p class="text-xs text-slate-500 italic">• Strong foundation in Mathematics and Science</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="py-20 md:py-32">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-3xl font-bold text-heading mb-4 gsap-reveal">Technical Skills</h2>
+                <p class="text-slate-400 mb-12 gsap-reveal">Technologies and tools I use to build secure and intelligent solutions.</p>
+                <div class="flex flex-wrap justify-center mb-8 gsap-reveal gap-2" id="skill-tabs">
+                    <button class="tab-btn active px-4 py-2 rounded-md font-medium text-sm" data-tab="security">Security Skills</button>
+                    <button class="tab-btn px-4 py-2 rounded-md font-medium text-sm" data-tab="languages">Languages</button>
+                    <button class="tab-btn px-4 py-2 rounded-md font-medium text-sm" data-tab="technologies">Technologies</button>
+                    <button class="tab-btn px-4 py-2 rounded-md font-medium text-sm" data-tab="frameworks">Frameworks</button>
+                    <button class="tab-btn px-4 py-2 rounded-md font-medium text-sm" data-tab="tools">Tools</button>
+                </div>
+                <div id="skill-content" class="gsap-reveal">
+                    <div class="tab-content grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6" id="security"></div>
+                    <div class="tab-content hidden grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6" id="languages"></div>
+                    <div class="tab-content hidden grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6" id="technologies"></div>
+                    <div class="tab-content hidden grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6" id="frameworks"></div>
+                    <div class="tab-content hidden grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6" id="tools"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-20 md:py-32">
+            <h2 class="text-3xl font-bold text-heading text-center mb-12 gsap-reveal">Featured Projects</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project Cards will be populated by JavaScript -->
+            </div>
+        </section>
+
+        <!-- Certifications Section -->
+        <section id="certifications" class="py-20 md:py-32">
+            <h2 class="text-3xl font-bold text-heading text-center mb-12 gsap-reveal">Certifications</h2>
+            <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
+                <div class="bg-card p-6 rounded-lg border border-slate-700 gsap-reveal security-glow">
+                    <div class="flex items-center gap-4 mb-4">
+                        <svg class="w-12 h-12 text-indigo-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.623 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+                        </svg>
+                        <div>
+                            <h3 class="text-xl font-bold text-heading">Google Cybersecurity Professional Certificate</h3>
+                            <p class="text-indigo-400 font-medium">June 2025</p>
+                        </div>
+                    </div>
+                    <p class="text-slate-400 text-sm">
+                        Comprehensive training in Linux networking, security operations, incident response, SIEM tools, cloud security basics, and hands-on labs in threat detection and defense.
+                    </p>
+                </div>
+                <div class="bg-card p-6 rounded-lg border border-slate-700 gsap-reveal security-glow" data-gsap-delay="100">
+                    <div class="flex items-center gap-4 mb-4">
+                        <svg class="w-12 h-12 text-indigo-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 00.75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 00-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0112 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 01-.673-.38m0 0A2.18 2.18 0 013 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 013.413-.387m7.5 0V5.25A2.25 2.25 0 0013.5 3h-3a2.25 2.25 0 00-2.25 2.25v.894m7.5 0a48.667 48.667 0 00-7.5 0M12 12.75h.008v.008H12v-.008z" />
+                        </svg>
+                        <div>
+                            <h3 class="text-xl font-bold text-heading">Certified Data Scientist - IBM</h3>
+                            <p class="text-indigo-400 font-medium">June 2025</p>
+                        </div>
+                    </div>
+                    <p class="text-slate-400 text-sm">
+                        Advanced training in data science methodologies including supervised learning, model evaluation, and data visualization using Python, Pandas, Scikit-learn, Matplotlib, and Jupyter Notebook.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 md:py-32">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-3xl font-bold text-heading mb-4 gsap-reveal">Get In Touch</h2>
+                <p class="text-slate-400 mb-8 gsap-reveal">I'm interested in cybersecurity opportunities, data science projects, and tech collaborations. Let's connect!</p>
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <a href="mailto:hasanryan052@gmail.com" class="bg-card p-6 rounded-lg border border-slate-700 gsap-reveal hover:border-indigo-400 transition-colors security-glow">
+                        <svg class="w-8 h-8 text-indigo-400 mx-auto mb-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+                        </svg>
+                        <h3 class="font-bold text-heading mb-1">Email</h3>
+                        <p class="text-indigo-400 text-sm">hasanryan052@gmail.com</p>
+                    </a>
+                    <a href="tel:+918922024316" class="bg-card p-6 rounded-lg border border-slate-700 gsap-reveal hover:border-indigo-400 transition-colors security-glow" data-gsap-delay="100">
+                        <svg class="w-8 h-8 text-indigo-400 mx-auto mb-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+                        </svg>
+                        <h3 class="font-bold text-heading mb-1">Phone</h3>
+                        <p class="text-indigo-400 text-sm">+91 8922024316</p>
+                    </a>
+                    <a href="https://www.linkedin.com/in/nusaibul-hasan-83aab2214/" target="_blank" class="bg-card p-6 rounded-lg border border-slate-700 gsap-reveal hover:border-indigo-400 transition-colors security-glow" data-gsap-delay="200">
+                        <svg class="w-8 h-8 text-indigo-400 mx-auto mb-2" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                        </svg>
+                        <h3 class="font-bold text-heading mb-1">LinkedIn</h3>
+                        <p class="text-indigo-400 text-sm">Connect with me</p>
+                    </a>
+                    <a href="https://github.com/nusaibul" target="_blank" class="bg-card p-6 rounded-lg border border-slate-700 gsap-reveal hover:border-indigo-400 transition-colors security-glow" data-gsap-delay="300">
+                        <svg class="w-8 h-8 text-indigo-400 mx-auto mb-2" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                        <h3 class="font-bold text-heading mb-1">GitHub</h3>
+                        <p class="text-indigo-400 text-sm">View my code</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-transparent">
+        <div class="container mx-auto px-6 py-8 text-center text-slate-500">
+            <p class="text-sm">Designed & Built by Nusaibul Hasan</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Particle.js config
+            particlesJS("particles-js", {
+                "particles": {
+                    "number": { "value": 60, "density": { "enable": true, "value_area": 800 } },
+                    "color": { "value": "#4f46e5" },
+                    "shape": { "type": "circle" },
+                    "opacity": { "value": 0.3, "random": false },
+                    "size": { "value": 3, "random": true },
+                    "line_linked": { "enable": true, "distance": 150, "color": "#4f46e5", "opacity": 0.2, "width": 1 },
+                    "move": { "enable": true, "speed": 1.5, "direction": "none", "random": false, "straight": false, "out_mode": "out", "bounce": false }
+                },
+                "interactivity": {
+                    "detect_on": "canvas",
+                    "events": { "onhover": { "enable": true, "mode": "repulse" }, "onclick": { "enable": true, "mode": "push" }, "resize": true },
+                    "modes": { "repulse": { "distance": 100, "duration": 0.4 }, "push": { "particles_nb": 4 } }
+                },
+                "retina_detect": true
+            });
+
+            // Typed.js config
+            new Typed('#typed-text', {
+                strings: ['digital systems.', 'data insights.', 'cyber threats.', 'intelligent solutions.'],
+                typeSpeed: 50,
+                backSpeed: 30,
+                loop: true
+            });
+
+            // Mobile menu toggle
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            if(mobileMenuButton && mobileMenu) {
+                mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+                document.querySelectorAll('#mobile-menu a').forEach(link => link.addEventListener('click', () => mobileMenu.classList.add('hidden')));
+            }
+
+            // Sticky header
+            const header = document.getElementById('header');
+            if(header) {
+                window.addEventListener('scroll', () => {
+                    header.classList.toggle('glass-effect', window.scrollY > 50);
+                });
+            }
+
+            // GSAP animations
+            gsap.registerPlugin(ScrollTrigger);
+            gsap.utils.toArray('.gsap-reveal').forEach(elem => {
+                gsap.fromTo(elem, { y: 50, opacity: 0 }, {
+                    y: 0,
+                    opacity: 1,
+                    duration: 1,
+                    delay: elem.dataset.gsapDelay / 1000 || 0,
+                    scrollTrigger: {
+                        trigger: elem,
+                        start: 'top 90%',
+                        toggleActions: 'play none none none'
+                    }
+                });
+            });
+            
+            // Tab logic function
+            function setupTabs(tabContainerId, contentContainerId) {
+                const tabButtons = document.querySelectorAll(`#${tabContainerId} .tab-btn`);
+                const tabContents = document.querySelectorAll(`#${contentContainerId} .tab-content`);
+                tabButtons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        const tabId = button.dataset.tab;
+                        tabButtons.forEach(btn => btn.classList.remove('active'));
+                        button.classList.add('active');
+                        tabContents.forEach(content => {
+                            content.classList.toggle('hidden', content.id !== tabId);
+                        });
+                    });
+                });
+            }
+
+            // Initialize tab sections
+            setupTabs('skill-tabs', 'skill-content');
+            
+            // Active nav on scroll
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('#main-nav a');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    if (pageYOffset >= sectionTop - 60) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').includes(current)) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+
+            // Populate Skills with relevant data
+            const skillsData = {
+                security: [
+                    { name: 'Linux', icon: '🐧' },
+                    { name: 'TCP/IP', icon: '🌐' },
+                    { name: 'Wireshark', icon: '🦈' },
+                    { name: 'SIEM Tools', icon: '🛡️' },
+                    { name: 'Cloud Security', icon: '☁️' },
+                    { name: 'Incident Response', icon: '🚨' },
+                    { name: 'Threat Detection', icon: '🔍' },
+                    { name: 'Network Security', icon: '🔒' }
+                ],
+                languages: [
+                    { name: 'Python', icon: '🐍' },
+                    { name: 'C/C++', icon: '⚡' },
+                    { name: 'SQL', icon: '🗃️' },
+                    { name: 'JavaScript', icon: '📜' },
+                    { name: 'HTML/CSS', icon: '🎨' },
+                    { name: 'React', icon: '⚛️' },
+                    { name: 'Node.js', icon: '🟢' },
+                    { name: 'Express.js', icon: '🚂' }
+                ],
+                technologies: [
+                    { name: 'Machine Learning', icon: '🤖' },
+                    { name: 'AI/Backend', icon: '🧠' },
+                    { name: 'Computer Vision', icon: '👁️' },
+                    { name: 'IoT', icon: '📡' },
+                    { name: 'Cloud Computing', icon: '☁️' },
+                    { name: 'Data Analytics', icon: '📊' },
+                    { name: 'Cybersecurity', icon: '🛡️' },
+                    { name: 'Web Development', icon: '🌐' }
+                ],
+                frameworks: [
+                    { name: 'TensorFlow', icon: '🔥' },
+                    { name: 'PyTorch', icon: '⚡' },
+                    { name: 'OpenCV', icon: '📷' },
+                    { name: 'Scikit-learn', icon: '📈' },
+                    { name: 'Pandas', icon: '🐼' },
+                    { name: 'NumPy', icon: '🔢' },
+                    { name: 'Flask', icon: '🌶️' },
+                    { name: 'FastAPI', icon: '🚀' }
+                ],
+                tools: [
+                    { name: 'Tableau', icon: '📊' },
+                    { name: 'PySpark', icon: '⚡' },
+                    { name: 'Hive', icon: '🐝' },
+                    { name: 'Apache Kafka', icon: '🔄' },
+                    { name: 'PyCharm', icon: '💻' },
+                    { name: 'Docker', icon: '🐳' },
+                    { name: 'Google Cloud', icon: '☁️' },
+                    { name: 'PostgreSQL', icon: '🐘' }
+                ]
+            };
+
+            for (const category in skillsData) {
+                const container = document.getElementById(category);
+                if (container) {
+                    skillsData[category].forEach(skill => {
+                        const skillEl = document.createElement('div');
+                        skillEl.className = 'bg-card p-4 rounded-lg flex flex-col items-center justify-center gap-2 security-glow';
+                        skillEl.innerHTML = `<span class="text-3xl">${skill.icon}</span><span class="text-sm font-medium">${skill.name}</span>`;
+                        container.appendChild(skillEl);
+                    });
+                }
+            }
+
+            // Populate Projects
+            const projectsData = [
+                {
+                    title: "Healthcare IoT Anomaly Detection",
+                    description: "Built a hybrid AI model (CNN-LSTM) deployed on IoT hardware for real-time anomaly detection with cloud backend for advanced analytics. Reduced false alarms by 60%.",
+                    tags: ["CNN-LSTM", "IoT", "Python", "Cloud"],
+                    github: "#",
+                    demo: null
+                },
+                {
+                    title: "FashionFlow Intelligence Platform",
+                    description: "Developed AI-powered inventory optimization system reducing overstock by 15% while maintaining 98% in-stock rates using Random Forest + XGBoost with interaction data.",
+                    tags: ["Random Forest", "XGBoost", "PostgreSQL", "Docker"],
+                    github: "#",
+                    demo: null
+                },
+                {
+                    title: "Threat Detection Homelab",
+                    description: "Built a comprehensive Linux homelab with Zeek network metadata ingestion, Wazuh/ELK integration, SSH brute-force detection, and Python automation for daily triage reports.",
+                    tags: ["Linux", "Zeek", "Wazuh", "ELK", "Python"],
+                    github: "#",
+                    demo: null
+                },
+                {
+                    title: "Cybersecurity Dashboard",
+                    description: "Created real-time security monitoring dashboard with threat intelligence feeds, incident tracking, and automated response workflows for SOC operations.",
+                    tags: ["SIEM", "Python", "React", "APIs"],
+                    github: "#",
+                    demo: null
+                },
+                {
+                    title: "Network Traffic Analyzer",
+                    description: "Developed deep packet inspection tool for network traffic analysis, protocol identification, and suspicious activity detection using machine learning algorithms.",
+                    tags: ["Wireshark", "Python", "ML", "Network"],
+                    github: "#",
+                    demo: null
+                },
+                {
+                    title: "Cloud Security Assessment Tool",
+                    description: "Built automated cloud infrastructure security assessment tool that identifies misconfigurations and compliance violations across AWS/GCP environments.",
+                    tags: ["Cloud Security", "AWS", "GCP", "Automation"],
+                    github: "#",
+                    demo: null
+                }
+            ];
+
+            const projectsContainer = document.querySelector('#projects .grid');
+            if (projectsContainer) {
+                projectsData.forEach((project, index) => {
+                    const projectEl = document.createElement('div');
+                    projectEl.className = 'bg-card rounded-lg border border-slate-700 flex flex-col gsap-reveal overflow-hidden security-glow';
+                    projectEl.setAttribute('data-gsap-delay', (index * 100).toString());
+                    
+                    let tagsHtml = project.tags.map(tag => `<span class="text-xs bg-indigo-800 text-indigo-200 px-2 py-1 rounded-full">${tag}</span>`).join('');
+                    let linksHtml = `<a href="${project.github}" class="text-slate-300 hover:text-indigo-400 transition-colors font-medium">View Code</a>`;
+                    if (project.demo) {
+                        linksHtml += `<a href="${project.demo}" target="_blank" class="text-slate-300 hover:text-indigo-400 transition-colors font-medium">Live Demo</a>`;
+                    }
+
+                    projectEl.innerHTML = `
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-heading mb-3">${project.title}</h3>
+                            <p class="text-slate-400 text-sm mb-4 flex-grow">${project.description}</p>
+                            <div class="flex flex-wrap gap-2 my-4">${tagsHtml}</div>
+                        </div>
+                        <div class="mt-auto p-6 pt-0 flex items-center gap-4">${linksHtml}</div>
+                    `;
+                    projectsContainer.appendChild(projectEl);
+                });
+
+                // Re-run GSAP to discover the new elements
+                gsap.utils.toArray('.gsap-reveal').forEach(elem => {
+                    gsap.fromTo(elem, { y: 50, opacity: 0 }, {
+                        y: 0,
+                        opacity: 1,
+                        duration: 1,
+                        delay: elem.dataset.gsapDelay / 1000 || 0,
+                        scrollTrigger: {
+                            trigger: elem,
+                            start: 'top 90%',
+                            toggleActions: 'play none none none'
+                        }
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html>.
